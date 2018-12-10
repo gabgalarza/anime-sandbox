@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Anime from 'react-anime';
+import './App.scss';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.intro();
+  }
+
+  intro = (children) => (
+    <Anime
+      easing="easeInOutExpo"
+      duration={1000}
+      direction="alternate"
+      delay={(el, index) => index * 300}
+      loop={false}
+      translateY="-13rem"
+      scale={[.15, 1.5]}>
+      { children }
+    </Anime>
+  );
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="container">
+          <div className="intro">
+          {
+            this.intro(
+              <h1>Welcome!!</h1>
+            )
+          }
+          </div>
+        </div>
       </div>
     );
   }
