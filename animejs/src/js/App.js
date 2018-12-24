@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Anime from 'react-anime';
-import './App.scss';
+import '../css/App.scss';
 
 class App extends Component {
   constructor(props) {
