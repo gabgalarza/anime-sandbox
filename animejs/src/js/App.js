@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Player from './components/Player.js';
 import Anime from 'react-anime';
 import '../css/App.scss';
 
@@ -27,6 +28,7 @@ class App extends Component {
     <div className="container">
       <div className="intro">
         {this.intro(<h1>yuu</h1>)}
+        <Player />
         {this.menu(this.state.opts)}
       </div>
     </div>
