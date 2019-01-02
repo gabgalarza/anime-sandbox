@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { setAudioContext, drawGraph } from './components/FreqGraph.js';
 import Player from './components/Player.js';
+import music from '../../src/media/Simon&GarfunkelAmerica.ogg';
 import Anime from 'react-anime';
 import '../css/App.scss';
 
@@ -10,7 +12,6 @@ class App extends Component {
 
     this.state = {
       opts: [
-        { name: 'play', link: '/play' },
         { name: 'support', link: '/support' },
         { name: 'faq', link: '/faq' },
       ],
@@ -24,13 +25,19 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const audioContext = setAudioContext(music);
+    drawGraph(audioContext);
+  }
+
   container = () => (
-    <div className="container">
+    <div>
       <div className="intro">
         {this.intro(<h1>yuu</h1>)}
-        <Player />
+        <Player></Player>
         {this.menu(this.state.opts)}
       </div>
+      <canvas id="visualizer"></canvas>
     </div>
   )
 
