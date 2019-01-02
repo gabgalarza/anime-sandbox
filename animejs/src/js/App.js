@@ -9,53 +9,66 @@ class App extends Component {
 
     this.state = {
       opts: [
-        { name: 'start', link: '/start' },
-        { name: 'contact', link: '/contact' },
-        { name: 'inquires', link: '/inquiries' },
+        { name: 'play', link: '/play' },
+        { name: 'support', link: '/support' },
+        { name: 'faq', link: '/faq' },
+      ],
+      gradient: [
+        { value: '0%' },
+        { value: '50%' },
+        { value: '100%' },
+        { value: '50%' },
+        { value: '0%' },
       ]
     }
   }
 
-  intro = (children) => (
+  container = () => (
+    <div className="container">
+      <div className="intro">
+        {this.intro(<h1>yuu</h1>)}
+        {this.menu(this.state.opts)}
+      </div>
+    </div>
+  )
+
+  intro = (title) => (
     <Anime
-      easing="easeInOutExpo"
-      duration={500}
-      direction="alternate"
-      delay={(el, index) => index * 300}
-      loop={false}
-      translateY="-13rem"
-      scale={[.15, 1.5]}>
-      { children }
+    easing="easeInOutExpo"
+    duration={500}
+    direction="alternate"
+    delay={(el, index) => index * 300}
+    loop={false}
+    translateY="-13rem"
+    scale={[.15, 1.5]}>
+      { title }
     </Anime>
   );
 
   menu = (opts = []) => (
-    <ul>
-      <nav>
-      {
-        opts.map(opt =>
-          <li key={opt.name}>
-            <Link to={opt.link}>{opt.name}</Link>
-            {/* TODO: replace components */}
-            <Route path={opt.link} component={() => <h1>tests</h1>} />
-          </li>
-        )
-      }
-      </nav>
-    </ul>
-)
+    <nav className="menu">
+      <ul>
+        {
+          opts.map(opt =>
+            <li key={opt.name}>
+              <Link to={opt.link}>{opt.name}</Link>
+              {/* TODO: replace components */}
+              <Route
+                path={opt.link}
+                component={() => <h1>tests</h1>} />
+            </li>
+          )
+        }
+      </ul>
+    </nav>
+  )
 
 
   render() {
     return (
       <Router>
         <div className="App">
-          <div className="container">
-            <div className="intro">
-              {this.intro(<h1>heeello & welcome</h1>)}
-              {this.menu(this.state.opts)}
-            </div>
-          </div>
+          {this.container()}
         </div>
       </Router>
     );

@@ -2,11 +2,12 @@
 
 .App {
   text-align: center;
+  background: radial-gradient(to bottom, #e41a1f, #ba0e1c, #920417, #6b0110, #460002);
+  background-size: 100% 100%;
 }
 
 .container {
   height: 100vh;
-  background: $primary;
 }
 
 .intro {
@@ -14,5 +15,25 @@
   position: absolute;
   width: 100%;
   height: 50vh;
-  color: $secondary;
+  color: $headline;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      width: 100px;
+
+      a {
+        text-decoration:none;
+        color: $secondary;
+      }
+    }
+  }
 }
