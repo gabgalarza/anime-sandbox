@@ -1,6 +1,7 @@
 export const drawGraph = (audioContext) => {
   document.getElementById('player').appendChild(audioContext);
   const context = new AudioContext();
+
   if (context) {
     const analyser = context.createAnalyser();
     const canvas = document.getElementById('visualizer');
@@ -34,8 +35,7 @@ export const drawGraph = (audioContext) => {
     frameLooper(analyser, ctx, canvas);
   } else {
       // Web Audio API is not supported
-      // Alert the user
-      alert("Sorry, but the Web Audio API is not supported by your browser. Please, consider upgrading to the latest version or downloading Google Chrome or Mozilla Firefox");
+      alert("The Web Audio API is not supported by your browser. Please upgrade to the latest version of Chrome or Firefox");
   }
 
 }
