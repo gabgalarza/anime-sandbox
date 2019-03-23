@@ -1,5 +1,11 @@
 @import './theme.scss';
 
+
+@mixin container {
+  display: flex;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
   background: radial-gradient(to bottom, #e41a1f, #ba0e1c, #920417, #6b0110, #460002);
@@ -13,9 +19,38 @@
   color: $headline;
 }
 
-.container {
+.app__container {
+  @include container;
+
+  .login {
+    @include container;
+    flex-direction: column;
+    min-width: 400px;
+  }
+
+  .login__menu {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem;
+  }
+}
+
+.form__container {
+  height: 10vh;
   display: flex;
   justify-content: center;
+
+  form {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    input {
+      padding: 6px;
+      min-width: 300px;
+    }
+  }
 }
 
 .menu {

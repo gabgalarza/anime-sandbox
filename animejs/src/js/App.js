@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import music from '../../src/media/Simon&GarfunkelAmerica.ogg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { setAudioContext, drawGraph } from './components/FreqGraph.js';
 import Intro from './components/Intro.js';
 import Player from './components/Player.js';
-import Menu from './components/Menu.js'
-
+import Login from './components/Login.js';
+//import Menu from './components/Menu.js';
+import music from '../../src/media/Simon&GarfunkelAmerica.ogg';
 import '../css/App.scss';
 
 class App extends Component {
@@ -15,25 +16,36 @@ class App extends Component {
       opts: [
         { name: 'support', link: '/support' },
         { name: 'faq', link: '/faq' },
-      ]
+      ],
+      isLoggedIn: false
     }
   }
 
   componentDidMount() {
     const audioContext = setAudioContext(music);
-    Promise.resolve(audioContext).then(cxt => drawGraph(cxt));
+
+    this.state.isLoggedIn && Promise.resolve(audioContext).then(cxt => drawGraph(cxt));
   }
 
-  container = () => (
-    <div className="container">
-      <div className="intro">
-        <Intro title="yuu" />
-        <Player></Player>
-        <Menu opts={this.state.opts} />
+  container = () => {
+    const { isLoggedIn } = this.state;
+
+    return (
+      <div className="app__container">
+        <div className="intro">
+            <Intro title="yuu" />
+            {isLoggedIn ? (
+              <div>
+                <Player></Player>
+              </div>
+            ) : (
+              <Login />
+            )}
+        </div>
+        <canvas id="visualizer"></canvas>
       </div>
-      <canvas id="visualizer"></canvas>
-    </div>
-  )
+   )
+}
 
   render() {
     return (
