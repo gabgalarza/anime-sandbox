@@ -1,50 +1,55 @@
 export const drawGraph = (audioContext) => {
+  let context = null;
   document.getElementById('player').appendChild(audioContext);
-  const context = new AudioContext();
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-  if (context) {
-    const analyser = context.createAnalyser();
-    const canvas = document.getElementById('visualizer');
-    const ctx = canvas.getContext('2d');
+  document.querySelector('#play').addEventListener('click', () => {
+    context = new AudioContext();
 
-    const source = context.createMediaElementSource(audioContext);
-    source.connect(analyser);
-    analyser.connect(context.destination);
+    if (context) {
+      const analyser = context.createAnalyser();
+      const canvas = document.getElementById('visualizer');
+      const ctx = canvas.getContext('2d');
 
-    const frameLooper = (...args) => {
-      window.requestAnimationFrame(frameLooper);
+      const source = context.createMediaElementSource(audioContext);
+      source.connect(analyser);
+      analyser.connect(context.destination);
 
-      const fbc_array = new Uint8Array(analyser.frequencyBinCount);
-      analyser.getByteFrequencyData(fbc_array);
+      const frameLooper = (...args) => {
+        window.requestAnimationFrame(frameLooper);
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#46000273';
+        const fbc_array = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(fbc_array);
 
-      const bars = 100;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#46000273';
 
-      for (let i = 0; i < bars; i++) {
-        let bar_x = i * 3;
-        let bar_width = 2;
-        let bar_height = -(fbc_array[i] / 2);
+        const bars = 100;
 
-        ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
-      }
+        for (let i = 0; i < bars; i++) {
+          let bar_x = i * 3;
+          let bar_width = 2;
+          let bar_height = -(fbc_array[i] / 2);
 
-    };
+          ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+        }
 
-    frameLooper(analyser, ctx, canvas);
-  } else {
-      // Web Audio API is not supported
-      alert("The Web Audio API is not supported by your browser. Please upgrade to the latest version of Chrome or Firefox");
-  }
+      };
 
+      frameLooper(analyser, ctx, canvas);
+    } else {
+        // Web Audio API is not supported
+        alert("The Web Audio API is not supported by your browser. Please upgrade to the latest version of Chrome or Firefox");
+    }
+  });
 }
 
 
 export const setAudioContext = (music) => {
+  window.Audio = window.Audio || window.webkitAudio;
   const context = new Audio();
+
   context.src = music;
-  context.controls = true;
   context.loop = true;
   context.autoplay = false;
 

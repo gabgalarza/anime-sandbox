@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { setAudioContext, drawGraph } from './components/FreqGraph.js';
 import Intro from './components/Intro.js';
 import Player from './components/Player.js';
-import Login from './components/Login.js';
-//import Menu from './components/Menu.js';
 import music from '../../src/media/Simon&GarfunkelAmerica.ogg';
 import '../css/App.scss';
 
@@ -13,34 +10,35 @@ class App extends Component {
     super(props);
 
     this.state = {
-      opts: [
-        { name: 'support', link: '/support' },
-        { name: 'faq', link: '/faq' },
-      ],
-      isLoggedIn: false
+      //isLoggedIn: true, //TODO: set back to false once login is built
+      audioContext: null
     }
   }
 
   componentDidMount() {
     const audioContext = setAudioContext(music);
 
-    this.state.isLoggedIn && Promise.resolve(audioContext).then(cxt => drawGraph(cxt));
+    if (audioContext) {
+      this.setState({
+        audioContext: audioContext
+      }, () => {
+        drawGraph(audioContext)
+      })
+    }
   }
 
   container = () => {
-    const { isLoggedIn } = this.state;
+    const { audioContext } = this.state;
 
     return (
       <div className="app__container">
         <div className="intro">
+        {(audioContext) ? (
+          <div>
             <Intro title="yuu" />
-            {isLoggedIn ? (
-              <div>
-                <Player></Player>
-              </div>
-            ) : (
-              <Login />
-            )}
+            <Player audioCtx={audioContext} />
+          </div>
+        ) : "Player not available right now.."}
         </div>
         <canvas id="visualizer"></canvas>
       </div>
