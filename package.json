@@ -1,8 +1,9 @@
 {
-  "name": "animejs",
+  "name": "animejs-development",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animejs": "^3.2.0",
     "eslint-config-react-app": "^3.0.5",
     "react": "^16.6.3",
     "react-anime": "^2.2.0",

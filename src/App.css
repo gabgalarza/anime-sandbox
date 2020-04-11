@@ -18,6 +18,10 @@
   color: white;
 }
 
+.App-header svg {
+  height: 40vmin;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -29,4 +33,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.path1 {
+  stroke-dasharray: 1000;
 }
