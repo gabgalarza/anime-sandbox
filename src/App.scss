@@ -1,0 +1,36 @@
+// colors
+$bodyBGColor: #030303fa;
+
+.App {
+  text-align: center;
+}
+
+.App-container {
+  background: $bodyBGColor;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.container {
+  display: grid;
+}
+
+.logo {
+  display: block;
+  border-radius: 50;
+  width: 50px;
+  height: 50px;
+  background-color:#49f848;
+}

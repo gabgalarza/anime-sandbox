@@ -1,35 +1,38 @@
-import React, {Component} from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import React, {useEffect} from 'react';
+import AppDelegates from './delegates/app.delegates';
 import Logo from './Logo';
-import './App.css';
+import './App.scss';
 
-class App extends Component {
-  componentDidMount() {
-    //init line drawing for logo
-    anime({
-      targets: '.path1',
-      strokeDashoffset: [anime.setDashoffset, 0],
-      easing: 'easeInOutSine',
-      duration: 1500,
-      delay: function(el, i) { return i * 500 },
-      direction: 'alternate',
-      loop: true
-    });
-  }
+const App = () => {
+  useEffect(() => {
+    const AppDelegateMethods = AppDelegates(this);
+    const introAnimation = setTimeout(() => {
+      AppDelegateMethods.initIntroAnimation();
+    }, 1500);
 
-  render() {
-    return (
-      <div className="App">
+    return () => {
+      clearTimeout(introAnimation);
+    };
+  }, []);
+
+  return (
+    <div className="App">
+      <div className="App-container">
         <header className="App-header">
           <Logo />
-          <p>Edit <code>src/App.js</code> and save to reload.</p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
+          <p>Coming soon.</p>
+          <a
+            className="App-link"
+            href="https://foo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn more
           </a>
         </header>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
