@@ -5,16 +5,17 @@
   "dependencies": {
     "animejs": "^3.2.0",
     "eslint-config-react-app": "^3.0.5",
-    "node-sass": "^4.14.1",
     "react": "^16.6.3",
     "react-anime": "^2.2.0",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "4.0.1",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!animejs)/\" --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -27,6 +28,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "sass-loader": "^10.0.5"
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   }
 }

@@ -1,9 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {mount} from 'enzyme';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('App', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<App/>);
+  });
+
+  describe("when App renders", () => {
+    it("renders without crashing", () => {
+      expect(wrapper.length).toBe(1);
+    });
+  });
+
+  describe("when App mounts", () => {
+    it("should call useEffect", () => {});
+  });
+
 });
