@@ -5,6 +5,7 @@
   "dependencies": {
     "animejs": "^3.2.0",
     "eslint-config-react-app": "^3.0.5",
+    "markdown-to-jsx": "^7.1.2",
     "react": "^16.6.3",
     "react-anime": "^2.2.0",
     "react-dom": "^16.6.3",

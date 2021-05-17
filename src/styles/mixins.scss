@@ -1,0 +1,13 @@
+/// Block Element
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// Block Modifier
+@mixin m($modifier) {
+  &--#{$modifier} {
+      @content;
+  }
+}

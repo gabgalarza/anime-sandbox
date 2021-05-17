@@ -1,35 +1,55 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import constants from './constants.json';
 import AppDelegates from './delegates/app.delegates';
-import Logo from './Logo';
+import PageSection from './components/PageSection';
+import ContactInfo from './components/ContactInfo';
+import ProjectRoll from './components/ProjectRoll';
+import MdFile from './markdown/intro.md';
 import './App.scss';
 
 const App = () => {
+  const [content, setContent] = useState("");
+
   useEffect(() => {
     const AppDelegateMethods = AppDelegates(this);
-    const introAnimation = setTimeout(() => {
-      AppDelegateMethods.initIntroAnimation();
-    }, 1500);
+    // Fetch markdown posts for sections
+    AppDelegateMethods.getMarkdownPost(MdFile)
+      .then(res => res.text())
+      .then(md => { setContent(md) })
 
-    return () => {
-      clearTimeout(introAnimation);
-    };
+    AppDelegateMethods.initIntroAnimation();
+
   }, []);
 
+  const { projects, text } = constants;
   return (
     <div className="App">
       <div className="App-container">
-        <header className="App-header">
-          <Logo />
-          <p>Coming soon.</p>
-          <a
-            className="App-link"
-            href="https://foo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn more
-          </a>
-        </header>
+        <PageSection
+          id="Intro"
+          blurbText={{
+            heading: text.introBlurb.heading,
+            copy: content,
+          }}
+          children={<ContactInfo/>}
+        />
+        <PageSection
+          id="Intro"
+          title="Projects"
+          children={
+            <ProjectRoll projects={projects} />
+          }
+        />
+        <PageSection
+          id="TechStack"
+          title="Tech Stack"
+          children={<div />}
+        />
+        <PageSection
+          id="Hobbies"
+          title="Hobbies"
+          children={<div />}
+        />
       </div>
     </div>
   );

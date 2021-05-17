@@ -1,32 +1,40 @@
-/// Block Element
-@mixin e($element) {
-  &__#{$element} {
-    @content;
-  }
+@import "./styles/fonts.scss";
+@import "./styles/theme.scss";
+@import "./styles/mixins.scss";
+@import "./styles/page.scss";
+@import "./styles/projectroll.scss";
+
+body {
+  overflow-x: hidden;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: $copySize;
 }
 
-/// Block Modifier
-@mixin m($modifier) {
-  &--#{$modifier} {
-      @content;
-  }
+h1 {
+  color: $copyHeaderColor;
+  font-size: $headerSize;
 }
-
-// colors
-$bodyBGColor: #030303fa;
 
 .App {
+  background: $bodyBGColor;
   text-align: center;
 }
 
 .App-container {
-  background: $bodyBGColor;
+  opacity: 0;
+  display: grid;
+  grid-gap: 30px;
+  padding: 0 32px;
+  top: 300px;
+  position: relative;
 }
 
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  position: sticky;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 0;
+  width: 100%;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -47,11 +55,4 @@ $bodyBGColor: #030303fa;
   width: 50px;
   height: 50px;
   background-color:#49f848;
-}
-
-.page-section {
-  @include e(container) {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-  }
 }

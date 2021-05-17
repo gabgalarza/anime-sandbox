@@ -1,21 +1,25 @@
 import anime from 'animejs/lib/anime.es.js';
+import constants from '../constants.json';
 
 const AppDelegates = _self => {
+  const getMarkdownPost = post => {
+    // Fetch markdown posts for sections
+    return fetch(post);
+  };
+
   const initIntroAnimation = () => {
-    console.log('initIntroAnimation called');
     anime({
-      targets: '.logo',
-      borderRadius: ['0%', '50%'],
-      translateY: [0, -120],
-      scale: 5,
-      easing: 'easeInOutQuad',
-      backgroundColor: '#FFF',
-      duration: 100,
+      targets: '.App-container',
+      translateY: -300,
+      opacity: 1,
+      easing: 'easeOutExpo',
+      delay: constants.animations.introDelay
     });
   };
 
   return {
-    initIntroAnimation
+    initIntroAnimation,
+    getMarkdownPost
   };
 };
 

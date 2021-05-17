@@ -1,0 +1,11 @@
+@import "./mixins.scss";
+
+.b-project-roll {
+  display: grid;
+  grid-gap: 10px;
+
+  @include e(project) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

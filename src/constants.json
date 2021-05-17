@@ -1,0 +1,15 @@
+{
+  "animations": {
+    "introDelay": 200
+  },
+  "projects": [
+    { "name": "Project 1", "rollImg": ""},
+    { "name": "Project 2", "rollImg": "" },
+    { "name": "Project 3", "rollImg": "" }
+  ],
+  "text": {
+    "introBlurb": {
+      "heading": "Hello 👋🏼 i'm Gabriel Galarza."
+    }
+  }
+}
