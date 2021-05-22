@@ -24,4 +24,17 @@
       margin: 0;
     }
   }
+
+  .b-action-btn-container {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+
+    @include e(action-btn) {
+      display: grid;
+      cursor: pointer;
+      grid-template-columns: 4fr .4fr;
+      grid-gap: 5px;
+      padding: 5px 0px;
+    }
+  }
 }

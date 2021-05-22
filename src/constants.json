@@ -22,6 +22,9 @@
   "text": {
     "introBlurb": {
       "heading": "Hello 👋🏼 i'm Gabriel Galarza."
+    },
+    "projectBlurb": {
+      "copy": "Here are some cool projects i'm working on today"
     }
   }
 }

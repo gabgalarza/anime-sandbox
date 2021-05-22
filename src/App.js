@@ -11,19 +11,19 @@ import './App.scss';
 
 const App = () => {
   const [content, setContent] = useState("");
+  let AppDelegateMethods = AppDelegates(this);
 
   useEffect(() => {
-    const AppDelegateMethods = AppDelegates(this);
     // Fetch markdown posts for sections
     AppDelegateMethods.getMarkdownPost(MdFile)
       .then(res => res.text())
       .then(md => { setContent(md) })
 
     AppDelegateMethods.initIntroAnimation();
-
   }, []);
 
   const { projects, text } = constants;
+  const { onHoverArrowAnimation, logoAnimation } = AppDelegateMethods;
   return (
     <div className="App">
       <div className="App-container">
@@ -36,22 +36,37 @@ const App = () => {
           children={<ContactInfo/>}
         />
         <PageSection
-          id="Intro"
+          id="Projects"
           title="Projects"
+          blurbText={{
+            heading: "",
+            copy: constants.text.projectBlurb.copy,
+          }}
           children={
-            <ProjectRoll projects={projects} />
+            <ProjectRoll
+              projects={projects}
+              actions={{
+                enterButton: onHoverArrowAnimation().enterButton,
+                leaveButton: onHoverArrowAnimation().leaveButton
+              }}
+            />
           }
         />
         <PageSection
           id="TechStack"
           title="Tech Stack"
           children={
-            <Carousel items={SVGCarouselComponents} />
+            <Carousel
+              items={SVGCarouselComponents}
+              actions={{
+                hover: e => { logoAnimation(e); }
+              }}
+            />
           }
         />
         <PageSection
-          id="Hobbies"
-          title="Hobbies"
+          id="BuyMeABeer"
+          title="Buy Me A Beer"
           children={<div />}
         />
       </div>

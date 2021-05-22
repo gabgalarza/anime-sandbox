@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProjectRoll = ({ projects }) => {
+const ProjectRoll = ({ projects, actions }) => {
   return (
     <div id="ProjectRollDiv" className="b-project-roll">
       {projects.map((proj, i) => {
@@ -9,7 +9,16 @@ const ProjectRoll = ({ projects }) => {
             <div className="b-project-roll__project--lang">{proj.lang}</div>
             <h2 className="b-project-roll__project--name">{proj.name}</h2>
             <div>{proj.desc}</div>
-            <div onMouseEnter={() => console.log('hover over read more')}>Read More <span>›</span></div>
+            <div className="b-action-btn-container">
+              <div
+                className="b-action-btn-container__action-btn"
+                onMouseOver={actions.enterButton}
+                onMouseLeave={actions.leaveButton}
+              >
+                <div>Read More</div>
+                <span> → </span>
+              </div>
+            </div>
           </article>
         );
       })}
