@@ -1,11 +1,23 @@
 {
   "animations": {
-    "introDelay": 200
+    "introDelay": 0
   },
   "projects": [
-    { "name": "Project 1", "rollImg": ""},
-    { "name": "Project 2", "rollImg": "" },
-    { "name": "Project 3", "rollImg": "" }
+    {
+      "lang": "javascript",
+      "name": "Midnight Memos",
+      "desc": "My personal blog where nonsense and random thoughts reside."
+    },
+    {
+      "lang": "javascript",
+      "name": "Did I Forget?",
+      "desc": "Mobile app that provides reminders for tasks you forgot to complete."
+    },
+    {
+      "lang": "javascript",
+      "name": "Some Project Not Finished",
+      "desc": "Some project I have not finished"
+    }
   ],
   "text": {
     "introBlurb": {

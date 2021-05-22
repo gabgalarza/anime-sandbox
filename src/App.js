@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import constants from './constants.json';
+import MdFile from './markdown/intro.md';
 import AppDelegates from './delegates/app.delegates';
 import PageSection from './components/PageSection';
 import ContactInfo from './components/ContactInfo';
 import ProjectRoll from './components/ProjectRoll';
-import MdFile from './markdown/intro.md';
+import Carousel from './components/Carousel';
+import * as SVGCarouselComponents from './components/SvgCarouselComponents';
 import './App.scss';
 
 const App = () => {
@@ -43,7 +45,9 @@ const App = () => {
         <PageSection
           id="TechStack"
           title="Tech Stack"
-          children={<div />}
+          children={
+            <Carousel items={SVGCarouselComponents} />
+          }
         />
         <PageSection
           id="Hobbies"

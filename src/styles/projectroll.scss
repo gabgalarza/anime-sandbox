@@ -6,6 +6,22 @@
 
   @include e(project) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    background-color: $projectBGColor;
+    color: $white;
+    grid-gap: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+
+    @include m(lang) {
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: $projectLangCopySize;
+    }
+
+    @include m(name) {
+      margin: 0;
+    }
   }
 }

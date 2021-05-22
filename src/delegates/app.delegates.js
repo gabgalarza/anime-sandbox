@@ -7,18 +7,23 @@ const AppDelegates = _self => {
     return fetch(post);
   };
 
+  const onHoverArrowAnimation = (e) => {
+    console.log(e, '<== event');
+  };
+
   const initIntroAnimation = () => {
     anime({
       targets: '.App-container',
       translateY: -300,
       opacity: 1,
-      easing: 'easeOutExpo',
+      easing: 'easeOutQuint',
       delay: constants.animations.introDelay
     });
   };
 
   return {
     initIntroAnimation,
+    onHoverArrowAnimation,
     getMarkdownPost
   };
 };

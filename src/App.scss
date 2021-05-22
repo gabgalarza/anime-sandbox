@@ -5,13 +5,14 @@
 @import "./styles/projectroll.scss";
 
 body {
+  background: #151515;
   overflow-x: hidden;
   font-family: 'Gothic A1', sans-serif;
   font-size: $copySize;
 }
 
 h1 {
-  color: $copyHeaderColor;
+  color: $white;
   font-size: $headerSize;
 }
 
