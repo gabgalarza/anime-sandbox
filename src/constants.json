@@ -26,5 +26,10 @@
     "projectBlurb": {
       "copy": "Here are some cool projects i'm working on today"
     }
-  }
+  },
+  "navLinks": [
+    { "name": "Projects", "href": "#" },
+    { "name": "Tech Stack", "href": "#" },
+    { "name": "Buy Me A Beer", "href": "#" }
+  ]
 }

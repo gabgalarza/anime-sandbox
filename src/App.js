@@ -3,6 +3,7 @@ import constants from './constants.json';
 import MdFile from './markdown/intro.md';
 import AppDelegates from './delegates/app.delegates';
 import PageSection from './components/PageSection';
+import NavListMenu from "./components/NavListMenu";
 import ContactInfo from './components/ContactInfo';
 import ProjectRoll from './components/ProjectRoll';
 import Carousel from './components/Carousel';
@@ -11,7 +12,7 @@ import './App.scss';
 
 const App = () => {
   const [content, setContent] = useState("");
-  let AppDelegateMethods = AppDelegates(this);
+  const AppDelegateMethods = AppDelegates(this);
 
   useEffect(() => {
     // Fetch markdown posts for sections
@@ -26,6 +27,7 @@ const App = () => {
   const { onHoverArrowAnimation, logoAnimation } = AppDelegateMethods;
   return (
     <div className="App">
+      <NavListMenu className="b-nav-menu" links={constants.navLinks} />
       <div className="App-container">
         <PageSection
           id="Intro"

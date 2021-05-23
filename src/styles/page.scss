@@ -1,5 +1,9 @@
 @import "./mixins.scss";
 
+.b-nav-menu {
+  display: grid;
+}
+
 .b-page-section {
   @include e(container) {
     display: grid;
@@ -61,28 +65,14 @@
   }
 }
 
-.b-carousel-logo-container {
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  @include e(logo) {
-    height: 128px;
-    width: 128px;
-    margin: 0 12px;
-
-    svg {
-      height: inherit;
-      width: inherit;
-    }
-  }
-}
-
 // Mobile Portrait
 @media screen and (min-device-width: 300px) 
               and (max-device-width: 812px)
               and (orientation: portrait) {
+  .b-nav-menu {
+    display: none;
+  }
+              
   .b-page-section__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

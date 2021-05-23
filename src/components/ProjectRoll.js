@@ -15,7 +15,7 @@ const ProjectRoll = ({ projects, actions }) => {
                 onMouseOver={actions.enterButton}
                 onMouseLeave={actions.leaveButton}
               >
-                <div>Read More</div>
+                <div>Repo</div>
                 <span> → </span>
               </div>
             </div>

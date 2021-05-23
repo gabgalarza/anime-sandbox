@@ -1,0 +1,28 @@
+.b-carousel-logo-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  @include e(logo) {
+    height: 215px;
+    width: 215px;
+    margin: 0 12px;
+
+    svg {
+      height: inherit;
+      width: inherit;
+    }
+  }
+}
+
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ .b-carousel-logo-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.b-carousel-logo-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
