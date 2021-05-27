@@ -4,6 +4,7 @@
 @import "./styles/page.scss";
 @import "./styles/carousel.scss";
 @import "./styles/projectroll.scss";
+@import "./styles/podcastroll.scss";
 
 html {
   overflow: hidden;
@@ -11,7 +12,7 @@ html {
 }
 
 body {
-  background: $bodyBGRadialGradient;
+  background: $bodyBGColor;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
@@ -25,7 +26,6 @@ h1 {
 }
 
 .App {
-  //background: inherit;
   text-align: center;
 }
 

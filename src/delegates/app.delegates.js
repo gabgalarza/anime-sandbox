@@ -36,6 +36,22 @@ const AppDelegates = _self => {
     });
   };
 
+  const playButtonAnimation = async(el, setLoading) => {
+    const {currentTarget} = el;
+
+    setLoading(true);
+
+    await anime({
+      targets: [currentTarget.querySelectorAll(".b-play-btn__icon")],
+      scale: 1.2,
+      duration: 100,
+      easing: "easeInOutSine",
+      direction: "alternate",
+    });
+
+    setLoading(false);   
+  };
+
   const initIntroAnimation = () => {
     anime({
       targets: '.App-container',
@@ -49,6 +65,7 @@ const AppDelegates = _self => {
   return {
     initIntroAnimation,
     onHoverArrowAnimation,
+    playButtonAnimation,
     logoAnimation,
     getMarkdownPost
   };

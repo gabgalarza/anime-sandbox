@@ -6,13 +6,14 @@ import PageSection from './components/PageSection';
 import NavListMenu from "./components/NavListMenu";
 import ContactInfo from './components/ContactInfo';
 import ProjectRoll from './components/ProjectRoll';
+import PodcastRoll from './components/PodcastRoll';
 import Carousel from './components/Carousel';
 import * as SVGCarouselComponents from './components/SvgCarouselComponents';
 import './App.scss';
 
 const App = () => {
-  const [content, setContent] = useState("");
   const AppDelegateMethods = AppDelegates(this);
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     // Fetch markdown posts for sections
@@ -23,11 +24,13 @@ const App = () => {
     AppDelegateMethods.initIntroAnimation();
   }, []);
 
+  const [loading, setLoading] = useState(false);
   const { projects, text } = constants;
-  const { onHoverArrowAnimation, logoAnimation } = AppDelegateMethods;
+  const { onHoverArrowAnimation, logoAnimation, playButtonAnimation } = AppDelegateMethods;
+
   return (
     <div className="App">
-      <NavListMenu className="b-nav-menu" links={constants.navLinks} />
+      {/* <NavListMenu className="b-nav-menu" links={constants.navLinks} /> */}
       <div className="App-container">
         <PageSection
           id="Intro"
@@ -67,9 +70,21 @@ const App = () => {
           }
         />
         <PageSection
-          id="BuyMeABeer"
-          title="Buy Me A Beer"
-          children={<div />}
+          id="Podcast"
+          title="Podcasts"
+          children={
+            <PodcastRoll
+              items={constants.podcasts}
+              actions={{
+                play: e => { playButtonAnimation(e, setLoading); },
+                isLoading: loading
+              }}
+            />
+          }
+        />
+        <PageSection
+          id="Footer"
+          children={<div>Copyright &copy; {new Date().getFullYear()}</div>}
         />
       </div>
     </div>

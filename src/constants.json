@@ -27,6 +27,11 @@
       "copy": "Here are some cool projects i'm working on today"
     }
   },
+  "podcasts": [
+    {"name": "Yer Damn Right", "url": "", "description": "On Ep. 4, we're talking about fake influencers and how theyre promoting a false narative of society."},
+    {"name": "Yer Damn Right", "url": "", "description": "On Ep. 3, we're asking questions on pregnancy cravings, and what can you do if you're pregnant and trying to get thru it all!"},
+    {"name": "Yer Damn Right", "url": "", "description": "On Ep. 2, just talking PURE shit. We don't know what this podcast is going to be about."}
+  ],
   "navLinks": [
     { "name": "Projects", "href": "#" },
     { "name": "Tech Stack", "href": "#" },
