@@ -1,14 +1,29 @@
 .b-podcast-roll {
-  @include e(item) {
+  @include e(item-container) {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
+    grid-gap: 35px;
   }
 
-  .description {
+  @include e(item) {
+    display: grid;
+    grid-template-columns: auto 3fr;
+    align-items: center;
+    grid-gap: 20px;
+  }
+
+  @include e(description) {
     display: grid;
     align-items: center;
     text-align: left;
+    grid-gap: 15px;
+
+    h2, p {
+      margin: 0;
+    }
+
+    h2 {
+      color: $white;
+    }
 
     p {
       font-size: $copySize;
@@ -19,13 +34,12 @@
 .b-play-btn {
   @include e(container) {
     display: grid;
-    grid-template-columns: 1fr 3fr;
     align-items: center;
   }
 
   @include e(icon) {
-    height: 50px;
-    width: 50px;
+    height: 80px;
+    width: 80px;
     display: grid;
     place-items: center;
     background: $actionButtonColor;

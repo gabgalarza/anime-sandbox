@@ -43,10 +43,6 @@ const App = () => {
         <PageSection
           id="Projects"
           title="Projects"
-          blurbText={{
-            heading: "",
-            copy: constants.text.projectBlurb.copy,
-          }}
           children={
             <ProjectRoll
               projects={projects}

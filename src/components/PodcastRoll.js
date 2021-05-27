@@ -4,7 +4,7 @@ import {ReactComponent as PlayBtnIcon} from '../assets/playbtn.svg';
 const PodcastRoll = ({items, actions}) => {
   return(
     <div id="PodcastRollDiv" className="b-podcast-roll">
-      <div>
+      <div className="b-podcast-roll__item-container">
         {items.map((item, i) => {
           return (
             <div key={i} id="PodcastItemDiv" className="b-podcast-roll__item">
@@ -15,8 +15,8 @@ const PodcastRoll = ({items, actions}) => {
                   </div>
                 </button>
               </div>
-              <div id="PodcastDescriptionDiv" className="description">
-                <h3>{item.name}</h3>
+              <div id="PodcastDescriptionDiv" className="b-podcast-roll__description">
+                <h2>{item.name}</h2>
                 <p>{item.description}</p>
               </div>
             </div>
